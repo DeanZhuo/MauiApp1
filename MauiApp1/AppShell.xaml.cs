@@ -2,10 +2,10 @@
 
 public partial class AppShell : Shell
 {
-	public AppShell()
-	{
-		InitializeComponent();
+    public AppShell()
+    {
+        InitializeComponent();
 
-		Routing.RegisterRoute(nameof(Notes.NotePage), typeof(Notes.NotePage));
-	}
+        Routing.RegisterRoute(nameof(Notes.NotePage), typeof(Notes.NotePage));
+    }
 }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Calculator.CalculatorPage"
+             Title="Calculator">
+    <Grid RowDefinitions="*, *, *, *, *, *, *"
+          ColumnDefinitions="*, *, *, *"
+          Margin="10" 
+          RowSpacing="3" ColumnSpacing="3">
+        <Label Grid.Row="0" Grid.Column="0"
+               Grid.ColumnSpan="4"
+               x:Name="EquationText"
+               FontSize="Title" 
+               HorizontalTextAlignment="End" />
+        <Label Grid.Row="1" Grid.Column="0"
+               Grid.ColumnSpan="4"
+               x:Name="InsertText"
+               FontSize="Title"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="End" />
+        <BoxView Grid.Row="1" Grid.Column="0"
+                 Grid.ColumnSpan="4"
+                 VerticalOptions="End"
+                 HeightRequest="1"
+                 Color="Gray" />
+
+        <Button Grid.Row="2" Grid.Column="0"
+                Text="C" Clicked="ClearClicked"
+                FontSize="Title" />
+        <Button Grid.Row="2" Grid.Column="1"
+                Text="+/-" Clicked="ChangeValue"
+                FontSize="Title" />
+        <Button Grid.Row="2" Grid.Column="2"
+                Text="%" Clicked="SelectPercent"
+                FontSize="Title" />
+        <Button Grid.Row="2" Grid.Column="3"
+                Text="/" Clicked="SelectOperator"
+                FontSize="Title" />
+
+        <Button Grid.Row="3" Grid.Column="0"
+                Text="7" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="3" Grid.Column="1"
+                Text="8" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="3" Grid.Column="2"
+                Text="9" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="3" Grid.Column="3"
+                Text="x" Clicked="SelectOperator"
+                FontSize="Title" />
+
+        <Button Grid.Row="4" Grid.Column="0"
+                Text="4" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="4" Grid.Column="1"
+                Text="5" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="4" Grid.Column="2"
+                Text="6" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="4" Grid.Column="3"
+                Text="-" Clicked="SelectOperator"
+                FontSize="Title" />
+
+        <Button Grid.Row="5" Grid.Column="0"
+                Text="1" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="5" Grid.Column="1"
+                Text="2" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="5" Grid.Column="2"
+                Text="3" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="5" Grid.Column="3"
+                Text="+" Clicked="SelectOperator"
+                FontSize="Title" />
+
+        <Button Grid.Row="6" Grid.Column="0"
+                Text="00" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="6" Grid.Column="1"
+                Text="0" Clicked="SelectNumber"
+                FontSize="Title" />
+        <Button Grid.Row="6" Grid.Column="2"
+                Text="." Clicked="SelectDot"
+                FontSize="Title" />
+        <Button Grid.Row="6" Grid.Column="3"
+                Text="=" Clicked="Calculate"
+                FontSize="Title" />
+    </Grid>
+</ContentPage>

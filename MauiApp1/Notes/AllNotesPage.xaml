@@ -5,30 +5,30 @@
              Title="Your Notes">
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" 
+        <ToolbarItem Text="Add" Clicked="Add_Clicked"
                      IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
-    
+
     <!-- display notes in a list -->
-    <CollectionView x:Name="notesCollection" 
+    <CollectionView x:Name="notesCollection"
                     ItemsSource="{Binding Notes}"
-                    Margin="20" 
+                    Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="noteCollection_SelectionChanged">
         <!-- designate how the collection of item are laid out -->
         <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical" 
+            <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="10" />
         </CollectionView.ItemsLayout>
-        
+
         <!-- define the appearance of each item in the list -->
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <Label Text="{Binding Text}" 
+                    <Label Text="{Binding Text}"
                            FontSize="22" />
-                    <Label Text="{Binding Date}" 
-                           FontSize="14" 
+                    <Label Text="{Binding Date}"
+                           FontSize="14"
                            TextColor="Silver" />
                 </StackLayout>
             </DataTemplate>
