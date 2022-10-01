@@ -5,15 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp1"
     xmlns:notes="clr-namespace:MauiApp1.Notes"
-    xmlns:calc="clr-namespace:MauiApp1.Calculator">
+    xmlns:calc="clr-namespace:MauiApp1.Calculator"
+    xmlns:curr="clr-namespace:MauiApp1.Currency">
     <!-- without explicitly writing flyout or tabbar, it should be flyout by default,
     if the flyout behaviour is not disabled from the root -->
+
+    <ShellContent Title="Currency"
+                  ContentTemplate="{DataTemplate curr:CurrencyPage}"
+                  Icon="coins" />
+
     <ShellContent Title="Notes"
                   ContentTemplate="{DataTemplate notes:AllNotesPage}"
                   Icon="notebook" />
     <ShellContent Title="Calculator"
                   ContentTemplate="{DataTemplate calc:CalculatorPage}"
-                  Icon="calculator"/>
+                  Icon="calculator" />
+
     <ShellContent Title="About"
                   ContentTemplate="{DataTemplate local:AboutPage}"
                   Icon="info" />

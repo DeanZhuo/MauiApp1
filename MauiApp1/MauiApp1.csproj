@@ -32,12 +32,12 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+    <MauiSplashScreen Include="Resources\Splash\logoname.svg" Color="#fbfbfb" />
 
-		<!-- Images -->
+    <!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
@@ -50,12 +50,15 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\calculator.svg" />
+	  <None Remove="Resources\Images\coins.svg" />
 	  <None Remove="Resources\Images\info.svg" />
 	  <None Remove="Resources\Images\notebook.svg" />
+	  <None Remove="Resources\Splash\logoname.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +72,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Calculator\CalculatorPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Currency\CurrencyPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Notes\AllNotesPage.xaml">

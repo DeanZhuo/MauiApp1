@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Currency.CurrencyPage"
+             Title="Currency Converter">
+    <VerticalStackLayout Margin="10" Spacing="5">
+        <Label Text="Indonesian Rupiah [IDR]" />
+        <Entry x:Name="IDRNum"
+               Keyboard="Numeric" />
+        <Label Text="United States Dollar [USD]" />
+        <Entry x:Name="USDNum"
+               Keyboard="Numeric" />
+        <Label Text="Japan Yen [JPY]" />
+        <Entry x:Name="JPYNum"
+               Keyboard="Numeric" />
+        <Label x:Name="Timestamp"
+               Text="Last Updated: - " />
+        <Label x:Name="IdrValue" />
+        <Label x:Name="JpyValue" />
+        <Button Text="Update Curency"
+                Clicked="UpdateCurrency"
+                HorizontalOptions="Center"
+                Margin="10" />
+        <ActivityIndicator x:Name="BusyIndicator"
+                           Color="{StaticResource Primary}" />
+    </VerticalStackLayout>
+</ContentPage>

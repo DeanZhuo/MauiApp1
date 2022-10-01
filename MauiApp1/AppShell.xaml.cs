@@ -5,7 +5,7 @@ public partial class AppShell : Shell
     public AppShell()
     {
         InitializeComponent();
-
-        Routing.RegisterRoute(nameof(Notes.NotePage), typeof(Notes.NotePage));
+        CurrencyService.InitCurrencyService();
+        Routing.RegisterRoute(nameof(NotePage), typeof(NotePage));
     }
 }
