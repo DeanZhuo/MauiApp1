@@ -8,9 +8,9 @@ public partial class CalculatorPage : ContentPage
         ClearClicked(this, EventArgs.Empty);
     }
 
-    private string NEUTRAL = "NEUTRAL";
-    private string ENTER_ONE = "ENTER_ONE";
-    private string ENTER_TWO = "ENTER_TWO";
+    private readonly string NEUTRAL = "NEUTRAL";
+    private readonly string ENTER_ONE = "ENTER_ONE";
+    private readonly string ENTER_TWO = "ENTER_TWO";
 
     private double? firstNumber;
     private double? secondNumber;
@@ -74,8 +74,7 @@ public partial class CalculatorPage : ContentPage
         if (state.Equals(NEUTRAL) || state.Equals(ENTER_ONE))
         {
             state = ENTER_TWO;
-            if (firstNumber == null)
-                firstNumber = 0;
+            firstNumber ??= 0;
         }
         else if (state.Equals(ENTER_TWO) && secondNumber != null)
         {
@@ -88,26 +87,7 @@ public partial class CalculatorPage : ContentPage
     private void Calculate(object sender, EventArgs e)
     {
         EquationText.Text = $"{firstNumber} {operation} {secondNumber}";
-        switch (operation)
-        {
-            case "+":
-                firstNumber += secondNumber;
-                break;
-
-            case "-":
-                firstNumber -= secondNumber;
-                break;
-
-            case "x":
-                firstNumber *= secondNumber;
-                break;
-
-            case "/":
-                firstNumber /= secondNumber;
-                break;
-
-            default: return;
-        }
+        firstNumber = Calculator.Calculate(firstNumber, secondNumber, operation);
         InsertText.Text = Convert.ToString(firstNumber);
         secondNumber = null;
 
