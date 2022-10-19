@@ -1,12 +1,13 @@
 ﻿namespace MauiApp1.Currency
 {
-    public static class CurrencyService
+    public class CurrencyService
     {
         private static HttpClient httpClient;
         private static JsonSerializerOptions serializer;
-        private static readonly string ApiKey = "Insert_your_api_key_here";
+        private static readonly string ApiKey = "F3p5mjqXn9wZ9LtR40pVHYF854wXxkqr";
         private static readonly string BaseUrl = "https://api.apilayer.com/exchangerates_data/latest?symbols=jpy%2C%20idr&base=USD";
 
+        // TODO: always check the ApiKey when you just opened the project, before and after git operations.
         public static void InitCurrencyService()
         {
             httpClient = new HttpClient();

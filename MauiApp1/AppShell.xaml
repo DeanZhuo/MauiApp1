@@ -10,18 +10,21 @@
     <!-- without explicitly writing flyout or tabbar, it should be flyout by default,
     if the flyout behaviour is not disabled from the root -->
 
-    <ShellContent Title="Currency"
-                  ContentTemplate="{DataTemplate curr:CurrencyPage}"
-                  Icon="coins" />
-
     <ShellContent Title="Notes"
                   ContentTemplate="{DataTemplate notes:AllNotesPage}"
-                  Icon="notebook" />
+                  Icon="notebook"
+                  Route="AllNotesPage"/>
     <ShellContent Title="Calculator"
                   ContentTemplate="{DataTemplate calc:CalculatorPage}"
-                  Icon="calculator" />
-
+                  Icon="calculator"
+                  Route="CalculatorPage" />
+    <ShellContent Title="Currency"
+                  ContentTemplate="{DataTemplate curr:CurrencyPage}"
+                  Icon="coins"
+                  Route="CurrencyPage" />
+    
     <ShellContent Title="About"
                   ContentTemplate="{DataTemplate local:AboutPage}"
-                  Icon="info" />
+                  Icon="info"
+                  Route="AboutPage" />
 </Shell>
