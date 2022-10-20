@@ -51,6 +51,47 @@
 
             return currencyContent;
         }
+
+        public enum Currencies
+        {
+            IDR,
+            USD,
+            JPY
+        }
+
+        public static List<string> UpdateValue(Currencies Currency, double Basenumber, double UsdToIdr, double UsdToJpy)
+        {
+            // order as in UI: IDR, USD, JPY
+            var result = new List<string>() { "0.00", "0.00", "0.00" };
+            double IdrValue = 0;
+            double UsdValue = 0;
+            double JpyValue = 0;
+
+            if (Currency.Equals(Currencies.IDR))
+            {
+                IdrValue = Basenumber;
+                UsdValue = Basenumber / UsdToIdr;
+                JpyValue = UsdValue * UsdToJpy;
+            }
+            else if (Currency.Equals(Currencies.USD))
+            {
+                IdrValue = Basenumber * UsdToIdr;
+                UsdValue = Basenumber;
+                JpyValue = Basenumber * UsdToJpy;
+            }
+            else if (Currency.Equals(Currencies.JPY))
+            {
+                UsdValue = Basenumber / UsdToJpy;
+                IdrValue = UsdValue * UsdToIdr;
+                JpyValue = Basenumber;
+            }
+
+            result[0] = IdrValue.ToString("N");
+            result[1] = UsdValue.ToString("N");
+            result[2] = JpyValue.ToString("N");
+
+            return result;
+        }
     }
 
     public class CurrencyResponse

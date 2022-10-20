@@ -2,8 +2,8 @@ namespace MauiApp1.Currency;
 
 public partial class CurrencyPage : ContentPage
 {
-    private double usdidr;
-    private double usdjpy;
+    private double UsdToIdr;
+    private double UsdToJpy;
 
     public CurrencyPage()
     {
@@ -25,12 +25,9 @@ public partial class CurrencyPage : ContentPage
             basenumber = 0;
         else
             basenumber = Convert.ToDouble(((Entry)sender).Text);
-        double toUsd = basenumber / usdjpy;
-        double toIdr = toUsd * usdidr;
 
-        JPYNum.Text = basenumber.ToString("N");
-        USDNum.Text = toUsd.ToString("N");
-        IDRNum.Text = toIdr.ToString("N");
+        var result = CurrencyService.UpdateValue(CurrencyService.Currencies.JPY, basenumber, UsdToIdr, UsdToJpy);
+        UpdateEditor(result);
     }
 
     private void USDNum_Completed(object sender, EventArgs e)
@@ -41,12 +38,8 @@ public partial class CurrencyPage : ContentPage
             basenumber = 0;
         else
             basenumber = Convert.ToDouble(((Entry)sender).Text);
-        double toIdr = basenumber * usdidr;
-        double toJpy = basenumber * usdjpy;
-
-        USDNum.Text = basenumber.ToString("N");
-        IDRNum.Text = toIdr.ToString("N");
-        JPYNum.Text = toJpy.ToString("N");
+        var result = CurrencyService.UpdateValue(CurrencyService.Currencies.USD, basenumber, UsdToIdr, UsdToJpy);
+        UpdateEditor(result);
     }
 
     private void IDRNum_Completed(object sender, EventArgs e)
@@ -57,12 +50,8 @@ public partial class CurrencyPage : ContentPage
             basenumber = 0;
         else
             basenumber = Convert.ToDouble(((Entry)sender).Text);
-        double toUsd = basenumber / usdidr;
-        double toJpy = toUsd * usdjpy;
-
-        IDRNum.Text = basenumber.ToString("N");
-        USDNum.Text = toUsd.ToString("N");
-        JPYNum.Text = toJpy.ToString("N");
+        var result = CurrencyService.UpdateValue(CurrencyService.Currencies.IDR, basenumber, UsdToIdr, UsdToJpy);
+        UpdateEditor(result);
     }
 
     private async void UpdateCurrency(object sender, EventArgs e)
@@ -75,7 +64,7 @@ public partial class CurrencyPage : ContentPage
             BusyIndicator.IsRunning = true;
             CurrencyResponse result = await CurrencyService.GetCurrency(update);
             TimeZoneInfo zoneInfo = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
-            DateTime dateTime = new DateTime(1970, 1, 1);
+            DateTime dateTime = new(1970, 1, 1);
             DateTime addseconds = dateTime.AddSeconds(result.timestamp);
             DateTime localtime = TimeZoneInfo.ConvertTimeFromUtc(addseconds, zoneInfo);
             Timestamp.Text = $"Last Updated: {localtime:F}";
@@ -91,15 +80,20 @@ public partial class CurrencyPage : ContentPage
 
     private void UpdateText(double IDR, double JPY)
     {
-        usdidr = IDR;
-        usdjpy = JPY;
+        UsdToIdr = IDR;
+        UsdToJpy = JPY;
 
-        IDRNum.Text = "0";
-        USDNum.Text = "0";
-        JPYNum.Text = "0";
+        UpdateEditor(new List<string> { "0.00", "0.00", "0.00" });
 
-        IdrValue.Text = $"USD in IDR = {usdidr}";
-        JpyValue.Text = $"USD in JPY = {usdjpy}";
+        IdrValue.Text = $"USD in IDR = {UsdToIdr}";
+        JpyValue.Text = $"USD in JPY = {UsdToJpy}";
         BusyIndicator.IsRunning = false;
+    }
+
+    private void UpdateEditor(List<string> result)
+    {
+        IDRNum.Text = result[0];
+        USDNum.Text = result[1];
+        JPYNum.Text = result[2];
     }
 }
