@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+    <!--<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>-->
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
@@ -35,8 +36,8 @@
     <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 
 		<!-- Splash Screen -->
-    <MauiSplashScreen Include="Resources\Splash\logoname.svg" Color="#fbfbfb" />
-
+    <MauiSplashScreen Include="Resources\Splash\logoname.svg" Color="#ffffff" BaseSize="400, 400" />
+    
     <!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
@@ -46,14 +47,6 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Resources\Images\calculator.svg" />
-	  <None Remove="Resources\Images\coins.svg" />
-	  <None Remove="Resources\Images\info.svg" />
-	  <None Remove="Resources\Images\notebook.svg" />
-	  <None Remove="Resources\Splash\logoname.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

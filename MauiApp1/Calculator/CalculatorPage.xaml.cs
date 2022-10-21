@@ -50,20 +50,20 @@ public partial class CalculatorPage : ContentPage
         {
             state = ENTER_ONE;
             firstNumber = Convert.ToDouble(entry);
-            InsertText.Text = Convert.ToString(firstNumber);
+            InsertText.Text = Calculator.ConvertString(firstNumber);
             EquationText.Text = "0";
         }
         else if (state.Equals(ENTER_ONE))
         {
-            entry = Convert.ToString(firstNumber) + entry;
+            entry = Calculator.ConvertString(firstNumber) + entry;
             firstNumber = Convert.ToDouble(entry);
-            InsertText.Text = Convert.ToString(firstNumber);
+            InsertText.Text = Calculator.ConvertString(firstNumber);
         }
         else if (state.Equals(ENTER_TWO))
         {
-            entry = Convert.ToString(secondNumber) + entry;
+            entry = Calculator.ConvertString(secondNumber) + entry;
             secondNumber = Convert.ToDouble(entry);
-            InsertText.Text = Convert.ToString(secondNumber);
+            InsertText.Text = Calculator.ConvertString(secondNumber);
         }
     }
 
@@ -86,9 +86,9 @@ public partial class CalculatorPage : ContentPage
 
     private void Calculate(object sender, EventArgs e)
     {
-        EquationText.Text = $"{firstNumber} {operation} {secondNumber}";
+        EquationText.Text = $"{Calculator.ConvertString(firstNumber)} {operation} {Calculator.ConvertString(secondNumber)}";
         firstNumber = Calculator.Calculate(firstNumber, secondNumber, operation);
-        InsertText.Text = Convert.ToString(firstNumber);
+        InsertText.Text = Calculator.ConvertString(firstNumber);
         secondNumber = null;
 
         Button button = (Button)sender;
@@ -109,12 +109,12 @@ public partial class CalculatorPage : ContentPage
         if (state.Equals(ENTER_ONE) && firstNumber != null)
         {
             firstNumber *= -1;
-            InsertText.Text = Convert.ToString(firstNumber);
+            InsertText.Text = Calculator.ConvertString(firstNumber);
         }
         if (state.Equals(ENTER_TWO) && secondNumber != null)
         {
             secondNumber *= -1;
-            InsertText.Text = Convert.ToString(secondNumber);
+            InsertText.Text = Calculator.ConvertString(secondNumber);
         }
     }
 

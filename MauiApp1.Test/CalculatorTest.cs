@@ -15,5 +15,18 @@ namespace MauiApp1.Test
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(1000.0, "1,000")]
+        [InlineData(10.50, "10.5")]
+        [InlineData(0.987654321, "0.9876543")]
+        public void ConvertString_ShouldConvertAndTrim(double? input, string expected)
+        {
+            string actual;
+
+            actual = Calculator.Calculator.ConvertString(input);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }

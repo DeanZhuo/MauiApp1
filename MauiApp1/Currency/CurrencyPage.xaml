@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Currency.CurrencyPage"
              Title="Currency Converter">
-    <VerticalStackLayout Margin="10" Spacing="5">
+    <VerticalStackLayout Margin="20" Spacing="5">
         <Label Text="Indonesian Rupiah [IDR]" />
         <Entry x:Name="IDRNum"
                Keyboard="Numeric" />
